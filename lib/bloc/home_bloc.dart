@@ -5,6 +5,8 @@ import 'package:flutterpatternbloc3/bloc/home_state.dart';
 import 'package:flutterpatternbloc3/pages/home_page.dart';
 import 'package:flutterpatternbloc3/services/http_service.dart';
 
+import '../pages/create_page.dart';
+import 'create_bloc.dart';
 import 'home_event.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
@@ -42,8 +44,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         context,
         MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => HomeBloc(),
-            child: const HomePage(),
+            create: (context) => CreateBloc(),
+            child: const CreatePage(),
           ),
         ));
     if (result != null) {

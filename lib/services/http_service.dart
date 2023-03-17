@@ -28,7 +28,7 @@ class Network {
     return null;
   }
 
-  static Future<String?> POST(String api, Map<String, String> params) async {
+  static Future<String?> POST(String api, Map<String, dynamic> params) async {
     print(params.toString());
     var uri = Uri.https(BASE, api); // http or https
     var response = await post(uri, headers: headers, body: jsonEncode(params));
@@ -66,12 +66,12 @@ class Network {
     return params;
   }
 
-  static Map<String, String> paramsCreate(Post post) {
-    Map<String, String> params = {};
+  static Map<String, dynamic> paramsCreate(Post post) {
+    Map<String, dynamic> params = {};
     params.addAll({
       'title': post.title!,
       'body': post.body!,
-      'userId': post.userId.toString(),
+      'userId': post.userId!,
     });
     return params;
   }

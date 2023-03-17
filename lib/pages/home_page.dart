@@ -47,6 +47,12 @@ class _HomePageState extends State<HomePage> {
           return viewOfLoading();
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          homeBloc.callCreatePage(context);
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 
