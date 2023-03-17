@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 
 import '../model/post_model.dart';
@@ -14,7 +13,6 @@ class LoadPostEvent extends HomeEvent {
 }
 
 class DeletePostEvent extends HomeEvent {
-
   Post? post;
   DeletePostEvent({this.post});
 

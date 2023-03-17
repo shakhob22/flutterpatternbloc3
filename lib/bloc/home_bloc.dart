@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +13,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<DeletePostEvent>(_onDeletePost);
   }
 
-  Future<void> _onLoadPosts(LoadPostEvent event, Emitter<HomeState> emit) async {
+  Future<void> _onLoadPosts(
+      LoadPostEvent event, Emitter<HomeState> emit) async {
     emit(HomeLoadingState());
     final response = await Network.GET(Network.API_LIST, {});
     if (response != null) {
@@ -25,9 +25,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
   }
 
-  Future<void> _onDeletePost(DeletePostEvent event, Emitter<HomeState> emit) async {
+  Future<void> _onDeletePost(
+      DeletePostEvent event, Emitter<HomeState> emit) async {
     emit(HomeLoadingState());
-    final response = await Network.DEL(Network.API_DELETE + event.post!.id.toString(), {});
+    final response =
+        await Network.DEL(Network.API_DELETE + event.post!.id.toString(), {});
     if (response != null) {
       emit(HomeDeletePostState());
     } else {
@@ -36,27 +38,30 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   void callCreatePage(BuildContext context) async {
-    var result = await Navigator.push(context, MaterialPageRoute(builder: (context) =>
-        BlocProvider(
-          create: (context) => HomeBloc(),
-          child: const HomePage(),
-        ),
-    ));
+    var result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => HomeBloc(),
+            child: const HomePage(),
+          ),
+        ));
     if (result != null) {
       add(LoadPostEvent());
     }
   }
 
   void callUpdatePage(BuildContext context) async {
-    var result = await Navigator.push(context, MaterialPageRoute(builder: (context) =>
-        BlocProvider(
-          create: (context) => HomeBloc(),
-          child: const HomePage(),
-        ),
-    ));
+    var result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => HomeBloc(),
+            child: const HomePage(),
+          ),
+        ));
     if (result != null) {
       add(LoadPostEvent());
     }
   }
-
 }

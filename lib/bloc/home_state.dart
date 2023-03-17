@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 
 import '../model/post_model.dart';
@@ -40,10 +39,3 @@ class HomeDeletePostState extends HomeState {
   // TODO: implement props
   List<Object?> get props => [];
 }
-
-
-
-
-
-
-

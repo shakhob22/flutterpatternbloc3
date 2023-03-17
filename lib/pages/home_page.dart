@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterpatternbloc3/bloc/home_bloc.dart';
@@ -16,7 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   late HomeBloc homeBloc;
 
   @override
@@ -37,7 +35,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text("Bloc"),
       ),
-      body: BlocBuilder<HomeBloc, HomeState> (
+      body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           if (state is HomeErrorState) {
             return viewOfError(state.errorMessage!);
@@ -73,6 +71,4 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
-
 }
-
